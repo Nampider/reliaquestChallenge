@@ -1,0 +1,14 @@
+plugins {
+    id 'project-conventions'
+}
+
+dependencies {
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation("io.github.resilience4j:resilience4j-spring-boot2:2.3.0")
+    implementation 'io.github.resilience4j:resilience4j-circuitbreaker'
+    implementation 'org.springframework.boot:spring-boot-starter-aop'
+}
+
+springBoot {
+    mainClass = 'com.reliaquest.api.ApiApplication'
+}

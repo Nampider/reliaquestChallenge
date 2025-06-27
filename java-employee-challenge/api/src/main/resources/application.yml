@@ -1,0 +1,23 @@
+spring.application.name: employee-api
+server.port: 8111
+
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        registerHealthIndicator: true
+        slidingWindowSize: 20
+        minimumNumberOfCalls: 10
+        failureRateThreshold: 50
+        waitDurationInOpenState: 20000  # 20 seconds
+        recordExceptions:
+          - org.springframework.web.client.HttpClientErrorException$TooManyRequests
+        ignoreExceptions:
+          - com.reliaquest.api.exception.EmployeeNotFoundException
+    instances:
+      mockEmployeeApi:
+        baseConfig: default
+
+logging:
+  level:
+    io.github.resilience4j.circuitbreaker: DEBUG
