@@ -94,7 +94,7 @@ public class EmployeeService {
     public SingleEmployeeResponse fallBackForSingleEmployee(Throwable ex) {
         if (ex.getClass() == EmployeeNotFoundException.class) {
             throw new EmployeeNotFoundException(ex.getMessage());
-        } else if (ex.getClass() == InternalServerException.class){
+        } else if (ex.getClass() == InternalServerException.class) {
             throw new InternalServerException(ex.getMessage());
         }
         throw new RateLimitException(

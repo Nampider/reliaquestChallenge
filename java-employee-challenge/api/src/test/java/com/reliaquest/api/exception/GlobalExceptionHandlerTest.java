@@ -15,7 +15,7 @@ class GlobalExceptionHandlerTest {
         RateLimitException ex = new RateLimitException("Something went wrong");
         ResponseEntity<Object> response = globalExceptionHandler.handleRateLimitException(ex);
 
-        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.INTERNAL_SERVER_ERROR);
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.TOO_MANY_REQUESTS);
     }
 
     @Test
